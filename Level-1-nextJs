@@ -1,0 +1,165 @@
+NIVEAU 1 - SIMPLE
+
+Une page d'accueil avec une grille de films
+Une page de détail
+Un layout basique
+Fetch de données simple depuis TMDB
+➡️ C'est un niveau très abordable pour débuter avec Next.js 14
+
+NIVEAU 2 - INTERMÉDIAIRE
+
+Ajout de la recherche
+Filtres simples
+Gestion du cache
+➡️ Complexité moyenne, introduit les concepts Client/Server mais reste gérable
+
+NIVEAU 3 - PLUS COMPLEXE
+
+Routes parallèles (@tabs)
+Modals avec routes interceptées
+Gestion des favoris
+➡️ Ces features sont plus avancées et peuvent être ajoutées plus tard
+
+---------------------------------------------------
+Voici le brief détaillé pour le NIVEAU 1 de MovieFlix.
+OBJECTIF NIVEAU 1
+Créer une app simple de catalogue de films avec les fonctionnalités de base de Next.js 14.
+FEATURES NIVEAU 1 :
+
+Page d'accueil (/)
+
+
+Grille responsive de films populaires
+Par film afficher :
+
+Poster
+Titre
+Année
+Note moyenne
+
+
+20 films par page maximum
+Layout avec header et footer simple
+
+
+Page détail film (/movies/[id])
+
+
+Image du film en grand
+Titre, date, durée, genres
+Synopsis
+Note moyenne
+Retour à la page d'accueil
+
+
+Header commun
+
+
+Logo "MovieFlix"
+Lien "Films" vers l'accueil
+Lien "À propos"
+
+DONNÉES :
+
+API TMDB (The Movie Database)
+Endpoints à utiliser :
+
+/movie/popular (liste des films)
+/movie/{id} (détail d'un film)
+
+
+Pas besoin de gérer le cache pour l'instant
+
+CONCEPTS NEXT.JS 14 À IMPLÉMENTER :
+
+Architecture App Router
+
+
+Utilisation correcte de app/
+Organisation des fichiers
+Convention de nommage Next.js 14
+
+
+Server Components
+
+
+Tous les composants en Server Components
+Data fetching dans les pages
+
+
+Layout et Pages
+
+
+Root layout pour structure commune
+Pages pour chaque route
+
+
+Loading et Error
+
+
+loading.js simple
+error.js basique
+not-found.js
+
+STRUCTURE DES FICHIERS MINIMALE :
+Copyapp/
+  layout.js (Layout principal)
+  page.js (Page d'accueil)
+  loading.js
+  error.js
+  movies/
+    [id]/
+      page.js (Page détail)
+      loading.js
+  about/
+    page.js (Page à propos simple)
+lib/
+  tmdb.js (Configuration API)
+components/
+  MovieGrid.js
+  MovieCard.js
+ÉTAPES SUGGÉRÉES :
+
+Setup Initial
+
+
+Créer projet avec create-next-app
+Configurer Tailwind
+Ajouter la clé API TMDB
+
+
+Structure
+
+
+Mettre en place l'architecture des fichiers
+Créer le layout principal
+
+
+Page d'accueil
+
+
+Créer la grille de films
+Fetch des films populaires
+Composant MovieCard
+
+
+Page détail
+
+
+Route dynamique
+Fetch des détails du film
+Mise en page des informations
+
+
+États
+
+
+Ajouter les loading states
+Gérer les erreurs basiques
+
+C'est un bon point de départ qui :
+
+Reste simple et focalisé
+Couvre les concepts de base
+Évite la complexité inutile
+Permet de comprendre Next.js 14
