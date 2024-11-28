@@ -12,5 +12,7 @@ export const movieSchema = z.object({
 
 export const movieSchemaArray = z.array(movieSchema)
 
+export type MovieAllSchema = z.infer<typeof movieSchema >
+
 
 

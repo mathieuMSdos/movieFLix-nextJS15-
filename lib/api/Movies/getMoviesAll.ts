@@ -1,9 +1,10 @@
-import { movieSchemaArray } from "../../schema/movie";
+import { movieSchemaArray } from "../../schema/moviesAll";
+import { GET_ALL_MOVIES_URL } from "./api-end-points";
 
-export const getMovies = async () => {
+export const getMoviesAll = async () => {
   try {
     const res = await fetch(
-      "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc",
+      GET_ALL_MOVIES_URL,
       {
         headers: {
           accept: "application/json",
@@ -18,7 +19,7 @@ export const getMovies = async () => {
       throw new Error(`Error : ${res.status}`); //permet de stopper la fonction si y'a une erreur
     }
 
-    console.log("fetch movie = ok !");
+    // console.log("fetch movie = ok !");
 
     const data = await res.json();
 
