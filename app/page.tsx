@@ -1,11 +1,10 @@
-import { fetchMovie } from "@/lib/fetchMovie";
+import { getMovies } from "@/lib/api/Movies/getMovies";
 import MovieCard from "@/src/components/MovieCard";
 import MovieGrid from "@/src/components/MovieGrid";
 
 export default async function Home() {
-
   // fetch des données movies
-  const data = await fetchMovie();
+  const data = await getMovies();
   console.log(data);
 
   return (

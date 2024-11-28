@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { z } from "zod";
 import { movieSchema } from "../../lib/schema/movie";
+import Link from "next/link";
 
 // Défini le type Movie à partir du schema zod
 type Movie = z.infer<typeof movieSchema>;
@@ -23,6 +24,7 @@ const MovieCard = ({
 
   return (
     // card
+    <Link href={`/movies/${id}`}>
     <div className="relative w-72 h-96 cursor-pointer overflow-hidden hover:border-2 transparent rounded-lg hover:border-white/70 transition-colors duration-200 shadow-lg hover:shadow-white/10 group/card">
 
       {/* background image */}
@@ -48,6 +50,7 @@ const MovieCard = ({
           <p>{`Rank: ${vote_average.toFixed(1)}/10`}</p>
         </div>
     </div>
+    </Link>
   );
 };
 

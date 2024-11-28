@@ -1,6 +1,6 @@
-import { movieSchemaArray } from "./schema/movie";
+import { movieSchemaArray } from "../../schema/movie";
 
-export const fetchMovie = async () => {
+export const getMovies = async () => {
   try {
     const res = await fetch(
       "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc",
