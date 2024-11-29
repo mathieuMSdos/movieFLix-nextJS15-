@@ -9,7 +9,6 @@ const movieGenreSchema = z.object({
 
 export const movieDetailsByIdSchema = z.object({
   poster_path: z.string().nullable(), //important au cas où un film n'a pas de poster
-  budget: z.number(),
   genres: z.array(movieGenreSchema),
   original_title: z.string(),
   overview: z.string(),

@@ -1,14 +1,33 @@
 import { getMoviesAll } from "@/lib/api/Movies/getMoviesAll";
+import { getMovieSearchResults } from "@/lib/api/Movies/getMovieSearchResults";
 import MovieCard from "@/src/components/MovieCard";
 import MovieGrid from "@/src/components/MovieGrid";
+import SearchBar from "@/src/components/SearchBar/SearchBar";
 
-export default async function Home() {
+// notre composant search bar push un paramètre dans l'url quand on lance une recherche
+// on peux récupérer ce paramètre dans notre composant
+// c'est comme ça qu'on type une searchParam
 
-  // fetch des données movies
-  const data = await getMoviesAll();
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: { search?: string };
+}) {
+
+
+  // On fetch soit : les films tendances soit la recherche  de l'utilisateur si searchParams.search n'est pas vide
+
+  let data;
+
+  if (searchParams.search && searchParams.search !== "") {
+    data = await getMovieSearchResults(searchParams.search,1);
+  } else {
+    data = await getMoviesAll();
+  }
 
   return (
-    <div>
+    <div className="flex flex-col items-center gap-10">
+      <SearchBar />
       <MovieGrid>
         {data.map((movie) => (
           <MovieCard

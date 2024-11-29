@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+// Grâçe à zod on va nettoyer les data qu'on envoie à notre app. On vire tous les fils qui n'ont pas de opster_path car ce sont souvent des anomalie de la BDD pas intéressant pour l'utilisateur final
+
 export const movieSchema = z.object({
   id: z.number(),
   title: z.string(),
@@ -8,9 +10,12 @@ export const movieSchema = z.object({
   poster_path: z.string(),
   vote_average: z.number(),
   vote_count: z.number(),
-});
+}).refine(data=> data.poster_path !==null)
 
 export const movieSchemaArray = z.array(movieSchema)
+
+
+
 
 export type MovieAllSchema = z.infer<typeof movieSchema >
 

@@ -12,7 +12,6 @@ const MovieCard = ({
   release_date,
   title,
   vote_average,
-  vote_count,
 }: MovieAllSchema) => {
   // Fonction rapide pour améliorer le rendu de la note
 
@@ -22,7 +21,7 @@ const MovieCard = ({
       <div className="relative w-72 h-96 cursor-pointer overflow-hidden hover:border-2 transparent rounded-lg hover:border-white/70 transition-colors duration-200 shadow-lg hover:shadow-white/10 group/card">
         {/* background image */}
         <Image
-          src={`https://image.tmdb.org/t/p/w500${poster_path}.jpg`}
+          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
           alt={`poster of ${title}`}
           fill
           className="object-cover transition-transform duration-500 ease-in-out group-hover/card:scale-105 "

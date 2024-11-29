@@ -30,20 +30,19 @@ const page = async ({ params }: DetailMoviePageProps) => {
   // c'est juste plus lisible pour utiliser les data
   const {
     poster_path,
-    budget,
     genres,
     original_title,
     overview,
     release_date,
     vote_average,
-    vote_count,
   } = dataMovieDetails;
 
-  console.log(genres);
 
   return (
     <div className={" relative w-full h-screen text-slate-50 "}>
-      <div className="absolute h-96 w-4/5 bg-black-50/20 backdrop-blur-md rounded-2xl border top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 grid grid-cols-2 gap-4 ">
+      <div className="absolute h-96 w-4/5 bg-black-50/20 backdrop-blur-md rounded-2xl border top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 grid grid-cols-2   gap-4 overflow-auto ">
+
+      {/* poster image */}
         <div className="relative rounded-2xl">
           <Image
             src={`https://image.tmdb.org/t/p/w500${poster_path}`}
@@ -52,7 +51,7 @@ const page = async ({ params }: DetailMoviePageProps) => {
             className="absolute object-cover rounded-tl-2xl rounded-bl-2xl  "
           />
         </div>
-        {/* container */}
+        {/* details movie container */}
         <div className="p-4 flex flex-col justify-start items-start gap-6">
           {/* Title section */}
           <div className="flex flex-col gap-1">
@@ -68,11 +67,11 @@ const page = async ({ params }: DetailMoviePageProps) => {
 
           {/* genre section */}
 
-          <div className="flex gap-2 text-sm">
+          <div className="flex flex-wrap text-sm">
             {genres
               .sort((a, b) => a.name.localeCompare(b.name))
               .map((genre, key) => (
-                <div key={key} className="flex items-center ">
+                <div key={key} className="flex items-center wrap ">
                   <span className="text-2xl font-extrabold mr-1 ">
                     &middot;
                   </span>
@@ -83,6 +82,8 @@ const page = async ({ params }: DetailMoviePageProps) => {
           <p>{overview}</p>
         </div>
       </div>
+
+      {/* background image */}
 
       <div className={"relative w-full h-3/5 rounded-2xl"}>
         {/* overlay */}
