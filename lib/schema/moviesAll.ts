@@ -9,8 +9,8 @@ export const movieSchema = z.object({
   overview: z.string(),
   poster_path: z.string(),
   vote_average: z.number(),
-  vote_count: z.number(),
-}).refine(data=> data.poster_path !==null)
+  vote_count: z.number().optional(),
+})
 
 export const movieSchemaArray = z.array(movieSchema)
 

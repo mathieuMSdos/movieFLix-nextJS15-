@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { MovieAllSchema } from "../../lib/schema/moviesAll";
+import FavoriteButton from "./FavoriteButton";
 
- // on récupère le typage de nos props pnp directement depuis notre fichier schema ZOD
-
+// on récupère le typage de nos props  directement depuis notre fichier schema ZOD
 
 const MovieCard = ({
   id,
@@ -13,12 +13,25 @@ const MovieCard = ({
   title,
   vote_average,
 }: MovieAllSchema) => {
-  // Fonction rapide pour améliorer le rendu de la note
 
+// on prépare un objet avec toutes les data pour les passer à notre bouton favorite afin de pouvoir faire le post avec le server action
+const movieData:MovieAllSchema = {
+  id,
+  overview,
+  poster_path,
+  release_date,
+  title,
+  vote_average,
+}
   return (
     // card
-    <Link href={`/movies/${id}`}>
-      <div className="relative w-72 h-96 cursor-pointer overflow-hidden hover:border-2 transparent rounded-lg hover:border-white/70 transition-colors duration-200 shadow-lg hover:shadow-white/10 group/card">
+
+    <div className="relative w-72 h-96 cursor-pointer overflow-hidden hover:border-2 transparent rounded-lg hover:border-white/70 transition-colors duration-200 shadow-lg hover:shadow-white/10 group/card">
+      {/* FAvorite logo */}
+      <div className=" absolute z-50 top-3 right-3">
+        <FavoriteButton movieData={movieData} />
+      </div>
+      <Link href={`/movies/${id}`}>
         {/* background image */}
         <Image
           src={`https://image.tmdb.org/t/p/w500${poster_path}`}
@@ -38,8 +51,8 @@ const MovieCard = ({
           <p>{overview}</p>
           <p>{`Rank: ${vote_average.toFixed(1)}/10`}</p>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 

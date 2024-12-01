@@ -23,7 +23,7 @@ export const getMoviesAll = async () => {
 
     const data = await res.json();
 
-    console.log("popual movie : ", data.results)
+    // console.log("popual movie : ", data.results)
 
     const validatedData = movieSchemaArray.parse(data.results);
     

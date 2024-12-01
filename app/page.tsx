@@ -13,14 +13,12 @@ export default async function Home({
 }: {
   searchParams: { search?: string };
 }) {
-
-
   // On fetch soit : les films tendances soit la recherche  de l'utilisateur si searchParams.search n'est pas vide
 
   let data;
 
   if (searchParams.search && searchParams.search !== "") {
-    data = await getMovieSearchResults(searchParams.search,1);
+    data = await getMovieSearchResults(searchParams.search, 1);
   } else {
     data = await getMoviesAll();
   }
@@ -28,7 +26,9 @@ export default async function Home({
   return (
     <div className="flex flex-col items-center gap-10">
       <SearchBar />
+
       <MovieGrid>
+        
         {data.map((movie) => (
           <MovieCard
             key={movie.id}
